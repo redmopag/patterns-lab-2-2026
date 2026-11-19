@@ -1,13 +1,9 @@
-"""
-Базовый Decorator и конкретные декораторы необходимо реализовать самостоятельно.
+from interfaces import BaseMessage
 
-Подсказка: все декораторы должны удовлетворять интерфейсу BaseMessage и
-работать с другим объектом BaseMessage через композицию.
-"""
 
-# TODO:
-# - MessageDecorator
-# - HeaderDecorator
-# - SignatureDecorator
-# - DateDecorator
-# - Base64Decorator
+class MessageDecorator(BaseMessage):
+    def __init__(self, message: BaseMessage) -> None:
+        self._message = message
+
+    def render(self) -> str:
+        return self._message.render()
